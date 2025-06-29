@@ -1,0 +1,3 @@
+/mnt/c/Users/pc/Desktop/ChatApp/build/CMakeFiles/chat_app.dir
+/mnt/c/Users/pc/Desktop/ChatApp/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/pc/Desktop/ChatApp/build/CMakeFiles/rebuild_cache.dir
