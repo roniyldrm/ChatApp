@@ -8,11 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/pc/Desktop/ChatApp/src/App.cpp" "CMakeFiles/chat_app.dir/src/App.cpp.o" "gcc" "CMakeFiles/chat_app.dir/src/App.cpp.o.d"
-  "/mnt/c/Users/pc/Desktop/ChatApp/src/ChatClient.cpp" "CMakeFiles/chat_app.dir/src/ChatClient.cpp.o" "gcc" "CMakeFiles/chat_app.dir/src/ChatClient.cpp.o.d"
-  "/mnt/c/Users/pc/Desktop/ChatApp/src/ChatServer.cpp" "CMakeFiles/chat_app.dir/src/ChatServer.cpp.o" "gcc" "CMakeFiles/chat_app.dir/src/ChatServer.cpp.o.d"
-  "/mnt/c/Users/pc/Desktop/ChatApp/src/MainFrame.cpp" "CMakeFiles/chat_app.dir/src/MainFrame.cpp.o" "gcc" "CMakeFiles/chat_app.dir/src/MainFrame.cpp.o.d"
-  "" "bin/chat_app" "gcc" "CMakeFiles/chat_app.dir/link.d"
+  "C:/Users/pc/Desktop/ChatApp/src/ChatClient.cpp" "CMakeFiles/chat_app.dir/src/ChatClient.cpp.obj" "gcc" "CMakeFiles/chat_app.dir/src/ChatClient.cpp.obj.d"
+  "C:/Users/pc/Desktop/ChatApp/src/ChatServer.cpp" "CMakeFiles/chat_app.dir/src/ChatServer.cpp.obj" "gcc" "CMakeFiles/chat_app.dir/src/ChatServer.cpp.obj.d"
+  "C:/Users/pc/Desktop/ChatApp/src/main.cpp" "CMakeFiles/chat_app.dir/src/main.cpp.obj" "gcc" "CMakeFiles/chat_app.dir/src/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

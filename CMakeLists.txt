@@ -4,34 +4,48 @@ project(ChatApp LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # Output binary to build/bin
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# Enable static wxWidgets
-add_definitions(-DwxUSE_UNICODE -D_UNICODE -DwxMSW -DwxUSE_GUI=1 -DwxUSE_RC_MANIFEST=1 -DwxSTATIC)
+# Use static wxWidgets
+add_definitions(-DwxUSE_UNICODE -D_UNICODE -DwxMSW -DwxUSE_GUI=1 -DwxUSE_RC_MANIFEST=1 -DwxSTATIC -D__WXMSW__)
 
-# Path to wxWidgets
-set(wxWidgets_ROOT_DIR "C:/C++ Libraries/wxWidgets")
-set(wxWidgets_LIB_DIR "${wxWidgets_ROOT_DIR}/lib/vc_lib")
+# wxWidgets paths
+set(wxWidgets_ROOT_DIR "C:/CppLibraries/wxWidgets-3.2.8")
+set(wxWidgets_LIB_DIR "${wxWidgets_ROOT_DIR}/lib/gcc_lib")
 
-# Include folders
 include_directories(
     ${CMAKE_SOURCE_DIR}/include
-    ${CMAKE_SOURCE_DIR}/external            # for <asio/asio.hpp>
+    ${CMAKE_SOURCE_DIR}/external
     "${wxWidgets_ROOT_DIR}/include"
-    "${wxWidgets_ROOT_DIR}/include/msvc"
+    "${wxWidgets_LIB_DIR}/mswu"         # ✅ This is the correct path now
 )
 
-# Linker path
+# Linker search path
 link_directories("${wxWidgets_LIB_DIR}")
 
-# Static wxWidgets libs
+# Link libraries (Monolithic build)
 set(WX_LIBS
-    wxbase32u
-    wxmsw32u_core
+    wxmsw32u
+    comctl32 rpcrt4 oleacc winmm shell32 uuid oleaut32
+    version uxtheme imm32 setupapi wsock32 winspool
+    gdi32 user32 comdlg32 advapi32 kernel32
+)
+
+# Source files
+file(GLOB_RECURSE SRC_FILES ${CMAKE_SOURCE_DIR}/src/*.cpp)
+
+# Build executable
+add_executable(chat_app ${SRC_FILES})
+
+# Link libraries
+target_link_libraries(chat_app
+    wxmsw32u
     wxpng
-    wxjpeg
     wxzlib
+    wxjpeg
     wxregexu
     wxexpat
     comctl32
@@ -52,13 +66,5 @@ set(WX_LIBS
     comdlg32
     advapi32
     kernel32
+    shlwapi           #Needed for PathMatchSpecW
 )
-
-# Source files
-file(GLOB_RECURSE SRC_FILES ${CMAKE_SOURCE_DIR}/src/*.cpp)
-
-# Build executable
-add_executable(chat_app ${SRC_FILES})
-
-# Link libraries
-target_link_libraries(chat_app PRIVATE ${WX_LIBS})
